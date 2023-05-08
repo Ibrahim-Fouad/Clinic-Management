@@ -1,0 +1,11 @@
+To add a new migration use this command, replace MIGRATION_NAME with migration name.
+
+`dotnet ef migrations add MIGRATION_NAME --startup-project ..\ClinicManagement.API --no-build -o Data\Migrations`
+
+To remove last migration use this command
+
+`dotnet ef migrations remove --startup-project ..\ClinicManagement.API --no-build`
+
+To update database use this command
+
+`dotnet ef database update --startup-project ..\ClinicManagement.API --no-build`
