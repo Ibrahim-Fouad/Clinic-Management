@@ -27,6 +27,11 @@ public class CreateClientCommandHandler : IRequestHandler<CreateClientCommand, C
 
         await _dbContext.SaveChangesAsync(cancellationToken);
 
+        await _dbContext.Clients.Entry(client)
+            .Reference(p => p.PreferredDoctor)
+            .LoadAsync(cancellationToken);
+
+
         return client.Adapt<ClientDto>();
     }
 }

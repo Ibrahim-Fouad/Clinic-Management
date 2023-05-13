@@ -7,15 +7,17 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Commands\Clients\" />
+    <Folder Include="DomainEvents\" />
     <Folder Include="DTOs\Clients\" />
     <Folder Include="DTOs\Doctors\" />
     <Folder Include="DTOs\Patients\" />
     <Folder Include="Enums\" />
     <Folder Include="Handlers\Commands\Clients\" />
+    <Folder Include="Handlers\DomainEvents\" />
     <Folder Include="Handlers\Queries\Doctors\" />
     <Folder Include="Mapping\" />
     <Folder Include="Queries\Doctors\" />
+    <Folder Include="Queries\Clients\" />
     <Folder Include="ValueObjects\" />
   </ItemGroup>
 

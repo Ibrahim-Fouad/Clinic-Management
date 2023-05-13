@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ClinicManagement.Core.Handlers.Queries.Doctors;
 
-public class ListDoctorsQueryHandler : IRequestHandler<ListDoctorsQuery, Paged<DoctorDto>>
+internal sealed class ListDoctorsQueryHandler : IRequestHandler<ListDoctorsQuery, Paged<DoctorDto>>
 {
     private readonly IAppDbContext _dbContext;
 

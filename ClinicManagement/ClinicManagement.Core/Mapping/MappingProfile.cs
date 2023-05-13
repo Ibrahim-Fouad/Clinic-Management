@@ -20,6 +20,11 @@ public class MappingProfile
 
         TypeAdapterConfig<Patient, PatientDto>
             .NewConfig()
-            .Map(p => p.PreferredDoctorName, dest => (dest.PreferredDoctor!.Name), patient => patient.PreferredDoctorId.HasValue);
+            .Map(p => p.PreferredDoctorName, dest => (dest.PreferredDoctor!.Name),
+                patient => patient.PreferredDoctorId.HasValue);
+
+        TypeAdapterConfig<AddPatientCommand, Patient>
+            .NewConfig()
+            .ConstructUsing(p => new Patient(p.ClientId, p.Name, p.Sex, p.AnimalType, p.PreferredDoctorId));
     }
 }

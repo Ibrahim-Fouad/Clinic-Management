@@ -1,8 +1,12 @@
-﻿namespace VetClinic.SharedKernel;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace VetClinic.SharedKernel;
 
 public abstract class Entity<T> : IEquatable<Entity<T>> where T : notnull
 {
     public T Id { get; private set; }
+
+    [NotMapped] public IList<DomainEventBase> DomainEvent { get; } = new List<DomainEventBase>();
 
     protected Entity(T id)
     {

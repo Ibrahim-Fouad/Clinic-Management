@@ -1,4 +1,5 @@
-﻿using VetClinic.SharedKernel;
+﻿using ClinicManagement.Core.DomainEvents;
+using VetClinic.SharedKernel;
 
 namespace ClinicManagement.Core.Aggregates;
 
@@ -24,10 +25,20 @@ public class Client : Entity<int>
 
     public void AddPatient(Patient patient)
     {
-        if (_patients.Contains(patient))
+        if (_patients.Any(p => p.Name.Equals(patient.Name, StringComparison.OrdinalIgnoreCase)))
             return;
 
         _patients.Add(patient);
+        DomainEvent.Add(new PatientAddedDomainEvent(Id, ToString(), patient));
+    }
+
+    public void RemovePatient(Patient patient)
+    {
+        if (!_patients.Any(p => p.Name.Equals(patient.Name, StringComparison.OrdinalIgnoreCase)))
+            return;
+
+        _patients.Remove(patient);
+        DomainEvent.Add(new PatientRemovedDomainEvent(Id, ToString(), patient));
     }
 
     public override string ToString() => $"{FullName} ({PreferredName})";
